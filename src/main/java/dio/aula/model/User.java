@@ -1,18 +1,20 @@
 package dio.aula.model;
 
+
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
-@NamedQueries({
+/*@NamedQueries({
         @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
         @NamedQuery(name = "User.findById", query = "SELECT u FROM User u WHERE u.id = :id")
-})
+})*/
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userId;
+    @Column(name = "user_id")
+    private Integer id;
 
     @Column(length = 50, nullable = false)
     private String name;
@@ -29,7 +31,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "userId=" + userId +
+                "userId=" + id +
                 ", name='" + name + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
@@ -37,11 +39,11 @@ public class User {
     }
 
     public Integer getUserId() {
-        return userId;
+        return id;
     }
 
     public void setUserId(Integer userId) {
-        this.userId = userId;
+        this.id = userId;
     }
 
     public String getName() {
